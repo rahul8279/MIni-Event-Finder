@@ -37,7 +37,7 @@ export const createEvent = asyncHandler(async (req: Request, res: Response) => {
 });
 
 export const getEvents = asyncHandler(async (req: Request, res: Response) => {
-  const { lng, lat, maxDistance, address, page = 1, limit = 10 } = req.query;
+  const { lng, lat, maxDistance, address, keyword , page = 1, limit = 10 } = req.query;
 
   if (!lng && !lat && !address) {
     const events = await Event.find()
@@ -73,6 +73,13 @@ export const getEvents = asyncHandler(async (req: Request, res: Response) => {
   } else if (address) {
     query = {
       "location.address": { $regex: new RegExp(address as string, "i") },
+    };
+  }else if (keyword) {
+    query = {
+      $or: [
+        { title: { $regex: new RegExp(keyword as string, "i") } },
+        { description: { $regex: new RegExp(keyword as string, "i") } },
+      ],
     };
   }
   const events = await Event.find(query)
