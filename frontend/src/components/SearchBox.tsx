@@ -27,7 +27,7 @@ const  LocationSearchBar = () => {
   };
 
   return (
-    <div className="flex items-center justify-center bg-white shadow-md rounded-full w-full max-w-3xl mx-auto p-2 relative">
+    <div className="hidden md:flex items-center justify-center bg-white shadow-md rounded-full md:w-full md:max-w-3xl w-xl mx-auto p-2 relative">
       {/* Keyword Search */}
       <input
         type="text"

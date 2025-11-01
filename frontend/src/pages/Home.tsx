@@ -4,7 +4,7 @@ import HeroSection from '../components/HeroSection'
 
 const Home : React.FC = () => {
   return (
-    <div className='w-screen '>
+    <div className=' '>
       <div className='w-full flex flex-col '>
         <Header />
       <HeroSection />
